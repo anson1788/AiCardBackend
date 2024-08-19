@@ -1,0 +1,452 @@
+            ## Title: DragonBall TCG
+
+            ### Objective
+            The main goal in DragonBall TCG is to reduce your opponent's life to
+            zero, making your opponent take damage. Players achieve this by
+            playing various types of cards that can deal damage, heal, or provide
+            strategic advantages.
+
+            ### Winning Criteria
+            You win the game when your opponent does not have any card in the life
+            area and your opponent needs to take damage.
+
+            ## Game Mechanics
+
+            ### Card Types
+            All cards have a unique identifier called ID.
+
+            #### Leader
+            - All Leader Cards have two modes: normal mode & awaken mode.
+            - Attributes:
+            - Normal power
+            - Awaken power
+            - Normal effect
+            - Awaken effect
+            - Color
+            - Features
+            - A deck can only use cards that are the same color as the leader card.
+            - All Leader Cards have two statuses: rested and active.
+            - Leader Cards can perform attack action only in active status.
+            - Leader Cards can attack opponent's active or rested leader card or
+            rested battle card.
+            - After performing an attack action, leader card will become rested.
+            - Leader cards start on the board at the beginning of the game.
+            - All games start with a leader card and a deck of 50-60 battle cards
+            and extra cards.
+            - Within a deck, you can only put the same card in a maximum number of 4.
+            - When a new turn begin, rested leader will become active.
+
+            #### Battle
+            - Attributes:
+            - Power
+            - Combo power
+            - Cost
+            - Color
+            - Features
+            - Effect
+            - All Battle Cards have two statuses: rested and active.
+            - Battle cards can perform attack action only in active status.
+            - Battle cards can attack opponent's active or rested leader card or
+            rested battle card.
+            - After performing an attack action, the battle card will become rested.
+            - Battle card can play from hand to the battle area only in main phase.
+            - Play battle card to battle area require enough active energy which
+            equal to card's cost.
+            - In the turn when a Battle Card is played on the field, it cannot
+            attack unless it has the "rush" effect and the Battle card will be in
+            active status.
+            - Combo power is used to increase the power of the attacking card or
+            the card being attacked.
+            - During combat phase, Battle Card can play from hand to combo area
+            without requiring any energy. In such situation, card's combo power
+            will be adding to the attacking card or the card being attacked.
+            - During combat phase, Battle Card can move from battle area to combo
+            area with requiring. In such situation, card's combo power will be
+            adding to the attacking card or the card being attacked.
+            - At the end of combat phase, all battle cards on combat area will
+            move to trash.
+            - When a new turn begin, all rested battle card will become active.
+
+            #### Extra
+            - Attributes:
+            - Cost
+            - Color
+            - Effect
+            - Features
+            - Extra card can play from hand to the field in main phase or combat phrase.
+            - Play Extra card from hand to the field require enough active energy
+            which equal to card's cost.
+            - In the turn when an Extra Card is played on the field, the card
+            effect will trigger automatically.
+            - Once the card effect is executed, it will go to the trash.
+
+            ### Game Flow
+            -Assume player 1 is the first player and player 2 is the second player.
+            -Start initialization of the Game
+            -game start
+            -player 1 start first turn. (turn 1)
+            -player 1 end the turn.
+            -player 2 start second turn. (turn 2)
+            -player 2 end the turn.
+            -player 1 start a new turn. (turn 3)
+            -go through the same loop until a player win the game.
+
+
+            ### Resources
+
+            #### Energy
+            - Energy has two statuses: rested and active.
+            - In the begining of first turn (turn 1), the player can gain 1 active energy.
+            - From the second turn onward, all players can gain 2 active energy at
+            the beginning of a new turn.
+            - All players can only have a maximum of 10 energy.
+            - When a new turn begin, all rested energy will become active.
+            - All Battle Cards and Extra Cards require active energy to play.
+            - When playing a card except the case used for combo area, players
+            must have active energy equal to the card's cost otherwise player
+            cannot play the card.
+            - After a card is played on the field, active energy equal to the
+            card's cost should turn into rested.
+            - All energy should be in the energy area.
+
+            ### Areas in Game Field
+            1. Hand Area
+            2. Energy Area
+            3. Combo Area : all card in combo area will move to trash when end of
+            combo area.
+            4. Battle Area
+            5. Trash Area
+            6. Life Area : Whenever a player takes damage, the top card from the
+            life area is drawn and moved to the player's hand. When player have 0
+            life cards in life area and take one more damage, player will lose the
+            game.
+
+            ### Initialization of the Game
+            1. both player's Deck shuffle randomly.
+            2. After shuffling, 6 cards are drawn from the top of the deck to the
+            player's hand.
+            3. If a player is not happy with the cards in their hand, they can
+            return all their cards on hand, shuffle the deck, and draw 6 new cards
+            from the top of the deck.
+            4. Players only have 1 chance to redraw.
+            5. After completing the draw hand process, 8 cards are drawn from the
+            top of the deck to the life area.
+            6. 8 cards in the life area mean the player has 8 life points.
+
+
+            ### Phases of a Turn
+
+            #### Start Phase
+            1. Player gains energy.
+            2. 1 card is drawn from the top of the deck and added to the player's hand.
+            3. All cards in the game field (energy area & battle area) become active.
+            4. Any start-of-turn effects occur.
+
+            #### Main Phase
+            1. Players can play cards from their hand as long as they have enough
+            active energy.
+            2. When a battle card is played from the hand successfully, the battle
+            card should be in active status but cannot attack unless it has the
+            effect "rush".
+            3. Players can use an active leader card or active battle card to
+            attack any of one the opponent's rested battle cards or leader (no
+            matter leader is active or rested).
+            4. When an attack is declared, it will enter to the combat phase.
+
+            #### Combat Phase
+            - There are 3 sub-phases in the combat phase: Player attack phase ,
+            opponent defend phase and damage summary phase.
+            - The Combo Power of all cards in the Combo Area is added to the
+            attacking card's Power or the card being attacked's Power.
+            ### Player attack phase
+            - the attacking player can increase their attacking card's power by
+            playing cards in the combo area through the following means:
+            1. Play Card From Hand: The attacking player can play any number of
+            cards from their hand directly to the Combo Area. This does not
+            require any energy.
+            2. Move Card From Battle Area: The attacking player can move any
+            number of their Battle Cards from the Battle Area to the Combo Area.
+            It does not matter if these cards are rested or active.
+            - With action 1 & 2, the total combo power of all cards in combo area
+            will be added to the attacking card's Power.
+            - player can choose ending player attack phase and it will enter
+            opponent defend phase.
+            ### Opponent defend phase
+            - the defending player can increase the defending card's power by
+            playing cards in the combo area through the following means:
+            1. Play Card From Hand: defending player can play any number of cards
+            from their hand directly to the Combo Area. This does not require any
+            energy.
+            2. Move Card From Battle Area: The defending player can move any
+            number of their Battle Cards from the Battle Area to the Combo Area.
+            It does not matter if these cards are rested or active.
+            - With action 1 & 2, the total combo power of all cards in combo area
+            will be added to the defending card's power.
+            - Opponent can choose ending Opponent defend phase and it will enter
+            Damage summary phase.
+            ### Damage summary phase
+            - System will summarize all combo power for both player.
+            - For player choose to attack rested battle card,
+            1.If the total power of the attacking card is higher than the total
+            power of the card being attacked, the card being attacked will go to
+            the trash.
+            2.If the total power of the attacking card is equal to the total power
+            of the card being attacked, nothing will happen to the card being
+            attacked.
+            3.If the total power of the attacking card is less than the total
+            power of the card being attacked, nothing will happen to the card
+            being attacked.
+
+            - For player choose to attack leader,
+            1.If the total power of the attacking card is higher than the total
+            power of the card being attacked, opponent need to take 1 damage. Mean
+            1 cards will be drawn from life area to hand. If life area doesnt have
+            any card and opponent need to take the damage, opponent loss the game.
+            2.If the total power of the attacking card is equal to the total power
+            of the card being attacked, nothing will happen to opponent.
+            3.If the total power of the attacking card is less than the total
+            power of the card being attacked, nothing will happen to opponent.
+
+            - Combat phase will end.
+            - After combat phase end, all cards in the combo area will go to the trash.
+            - After combat phase end, the attacking card no matter is battle card
+            or leader will become rested after the damage summary phase.
+            - After combat phase end, and it will go back to the main phase and in
+            turn player can choose to start enter action.
+            - Opponent should always keep minimize card to protect opponent to get damage
+
+            #### End Phase
+            1. Check for any end-of-turn conditions or effects.
+            2. Start a new turn for your opponents.
+
+
+            # Card details
+            - **Son Goku:**
+            id:FS01-01
+            Card Type： leader card
+            Power : 15000
+            Awaken Power : 20000
+            Color :Red
+            features:Saiyan/Universe 7
+            normal effect :
+            [When Attacking] Draw 1 card.
+            [Awaken] When your life is at 4 or less, draw 1 card. Then, flip this card over.
+            awaken effect :
+            [When Attacking] Draw 1 card.
+            [Activate Battle][Once per turn] Choose up to 1 of your Battle Cards
+            and it gets +5000 power for the battle.
+
+            - **Whis:**
+            id:FS01-02
+            Card Type： battle card
+            Power : 5000
+            Combo power : 1000
+            Color :Red
+            Cost : 1
+            features:Angel/Universe 7
+            effect :
+            [On Play] Choose up to 1 of your opponent's Battle Cards and it gets
+            -5000 power for the turn.
+
+            - **Master Roshi:**
+            id:FS01-03
+            Card Type： battle card
+            Power : 5000
+            Combo power : 5000
+            Color :Red
+            Cost : 1
+            features:Earthling/Universe 7
+            effect :
+            [On Play] Draw 1 card.
+
+            - **Krillin:**
+            id:FS01-04
+            Card Type： battle card
+            Power : 15000
+            Combo power : 10000
+            Color :Red
+            Cost : 2
+            features:Earthling/Universe 7
+            effect :
+            [Permanent][Your Turn] This card gets +5000 power.
+            [On Play] Add up to 1 card from your life to your hand.
+
+
+            - **Shin:**
+            id:FS01-05
+            Card Type： battle card
+            Power : 15000
+            Combo power : 10000
+            Color :Red
+            Cost : 7
+            features:Supreme Kai/Universe 7
+            effect :
+            [Super Combo] (A maximum of 4 cards with [Super Combo] can be placed in a deck.)
+            [Auto][Opponent's Turn] When you use this card in a combo from your
+            hand, this card gets +10000 combo power.
+
+
+            - **Android 17:**
+            id:FS01-06
+            Card Type： battle card
+            Power : 20000
+            Combo power : 10000
+            Color :Red
+            Cost : 3
+            features:Android/Universe 7
+            effect :
+            [Permanent][Opponent's Turn] This card gets +5000 power.
+            [On Play] Add up to 1 card from your life to your hand.
+
+
+            - **Android 18:**
+            id:FS01-07
+            Card Type： battle card
+            Power : 20000
+            Combo power : 10000
+            Color :Red
+            Cost : 2
+            features:Android/Universe 7
+            effect :
+            NA
+
+            - **Son Goku:**
+            id:FS01-08
+            Card Type： battle card
+            Power : 35000
+            Combo power : 0
+            Color :Red
+            Cost : 5
+            features:Saiyan/Universe 7
+            effect :
+            [Double Strike] (This card inflicts 2 damage instead of 1 when attacking.)
+            [On Play] Choose up to 1 of your opponent's Battle Cards and it gets
+            -20000 power for the turn.
+
+            - **Son Gohan:Adolescence:**
+            id:FS01-09
+            Card Type： battle card
+            Power : 25000
+            Combo power : 5000
+            Color :Red
+            Cost : 4
+            features:Saiyan/Earthling/Universe 7
+            effect :
+            [Critical] (When this card inflicts damage with an attack, the life is
+            placed in the Drop.)
+            [When Attacking] Choose up to 1 of your opponent's Battle Cards and it
+            gets -10000 power for the turn.
+
+
+
+            - **Tien Shinhan:**
+            id:FS01-10
+            Card Type： battle card
+            Power : 15000
+            Combo power : 10000
+            Color :Red
+            Cost : 1
+            features:Earthling/Universe 7
+            effect :
+            NA
+
+
+            - **Piccolo:**
+            id:FS01-11
+            Card Type： battle card
+            Power : 25000
+            Combo power : 10000
+            Color :Red
+            Cost : 3
+            features:Namekian/God/Universe 7
+            effect :
+            NA
+
+
+            - **Beerus:**
+            id:FS01-12
+            Card Type： battle card
+            Power : 20000
+            Combo power : 5000
+            Color :Red
+            Cost : 3
+            features:God of Destruction/Universe 7
+            effect :
+            [Critical] (When this card inflicts damage with an attack, the life is
+            placed in the Drop.)
+            [When Attacking] Choose up to 1 of your other Battle Cards and it gets
+            +5000 for the turn.
+
+
+            - **Frieza:**
+            id:FS01-13
+            Card Type： battle card
+            Power : 30000
+            Combo power : 10000
+            Color :Red
+            Cost : 4
+            features:Frieza Clan/Universe 7
+            effect :
+            NA
+
+
+            - **Vegeta:**
+            id:FS01-14
+            Card Type： battle card
+            Power : 15000
+            Combo power : 10000
+            Color :Red
+            Cost : 2
+            features:Saiyan/Universe 7
+            effect :
+            [Critical] (When this card inflicts damage with an attack, the life is
+            placed in the Drop.)
+
+
+            - **Kamehameha:**
+            id:FS01-15
+            Card Type： Extra card
+            Color :Red
+            Cost : 1
+            features:Saiyan
+            effect :
+            [Activate Battle] Choose your Leader or up to 1 of your Battle Cards
+            and it gets +15000 power for the battle. Then, choose up to 1 of your
+            opponent's Battle Cards and it gets -5000 power for the turn.
+
+
+
+            - **God Kamehameha:**
+            id:FS01-16
+            Card Type： Extra card
+            Color :Red
+            Cost : 2
+            features:Saiyan
+            effect :
+            [Permanent] If you have no Battle Cards, reduce the cost of this card
+            in your hand by 1.
+            [Activate Main] Choose up to 1 of your opponent's Battle Cards with
+            30000 power or less and KO it.
+
+
+
+           Current environment:
+           Current turn : turn 1 (turn 1 meaning start of the game)
+           Current phrase : main phase
+           Player who go first ? Player 1
+           player 1 Leader:FS01-01
+           player 1 cards in deck : ['FS01-06-16', 'FS01-03-6', 'FS01-14-44', 'FS01-10-28', 'FS01-13-39', 'FS01-05-13', 'FS01-08-23', 'FS01-04-12', 'FS01-03-5', 'FS01-12-35', 'FS01-11-32', 'FS01-14-43', 'FS01-06-18', 'FS01-14-42', 'FS01-14-41', 'FS01-03-8', 'FS01-04-10', 'FS01-02-4', 'FS01-16-47', 'FS01-10-30', 'FS01-10-27', 'FS01-15-46', 'FS01-12-33', 'FS01-12-34', 'FS01-06-17', 'FS01-15-45', 'FS01-10-29', 'FS01-13-37', 'FS01-02-3', 'FS01-12-36', 'FS01-13-40', 'FS01-04-11', 'FS01-07-20', 'FS01-16-48']
+           (assume index 0 is the top of the deck)
+           player 1's hand : ['FS01-07-22', 'FS01-13-38', 'FS01-07-19', 'FS01-05-14', 'FS01-06-15', 'FS01-09-25']
+           player 1's life area : ['FS01-03-7', 'FS01-04-9', 'FS01-02-2', 'FS01-07-21', 'FS01-09-26', 'FS01-11-31', 'FS01-02-1', 'FS01-08-24']
+           (assume index 0 is the top card of the life area)
+
+           player 2 Leader:FS01-01 
+           player 2 cards in deck : ['FS01-04-9', 'FS01-13-39', 'FS01-10-28', 'FS01-14-42', 'FS01-10-30', 'FS01-14-43', 'FS01-12-33', 'FS01-09-26', 'FS01-07-22', 'FS01-08-23', 'FS01-07-19', 'FS01-09-25', 'FS01-03-5', 'FS01-13-37', 'FS01-07-21', 'FS01-15-46', 'FS01-11-32', 'FS01-04-10', 'FS01-02-4', 'FS01-03-6', 'FS01-16-47', 'FS01-10-27', 'FS01-12-34', 'FS01-14-41', 'FS01-16-48', 'FS01-10-29', 'FS01-03-8', 'FS01-05-13', 'FS01-06-18', 'FS01-04-12', 'FS01-13-40', 'FS01-11-31', 'FS01-06-16', 'FS01-15-45']
+           (assume index 0 is the top of the deck)
+           player 2's hand : ['FS01-14-44', 'FS01-02-3', 'FS01-12-36', 'FS01-08-24', 'FS01-05-14', 'FS01-07-20']
+           player 2's life area : ['FS01-13-38', 'FS01-04-11', 'FS01-02-2', 'FS01-12-35', 'FS01-03-7', 'FS01-06-15', 'FS01-06-17', 'FS01-02-1']
+           (assume index 0 is the top card of the life area)
+
+
+           based on the game rules & Card details provided, analysis player 1's card in hand
