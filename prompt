@@ -1,0 +1,228 @@
+
+            ## Title: DragonBall TCG
+
+            ### Objective
+            The main goal in DragonBall TCG is to reduce your opponent's life to
+            zero, making your opponent take damage. Players achieve this by
+            playing various types of cards that can deal damage, heal, or provide
+            strategic advantages.
+
+            ### Winning Criteria
+            You win the game when your opponent does not have any card in the life
+            area and your opponent needs to take damage.
+
+            ## Game Mechanics
+
+            ### Card Types
+            All cards have a unique identifier called ID.
+
+            #### Leader
+            - All Leader Cards have two modes: normal mode & awaken mode.
+            - Attributes:
+            - Normal power
+            - Awaken power
+            - Normal effect
+            - Awaken effect
+            - Color
+            - Features
+            - A deck can only use cards that are the same color as the leader card.
+            - All Leader Cards have two statuses: rested and active.
+            - Leader Cards can perform attack action only in active status.
+            - Leader Cards can attack opponent's active or rested leader card or
+            rested battle card.
+            - After performing an attack action, leader card will become rested.
+            - Leader cards start on the board at the beginning of the game.
+            - All games start with a leader card and a deck of 50-60 battle cards
+            and extra cards.
+            - Within a deck, you can only put the same card in a maximum number of 4.
+            - When a new turn begin, rested leader will become active.
+
+            #### Battle
+            - Attributes:
+            - Power
+            - Combo power
+            - Cost
+            - Color
+            - Features
+            - Effect
+            - All Battle Cards have two statuses: rested and active.
+            - Battle cards can perform attack action only in active status.
+            - Battle cards can attack opponent's active or rested leader card or
+            rested battle card.
+            - After performing an attack action, the battle card will become rested.
+            - Battle card can play from hand to the battle area only in main phase.
+            - Play battle card to battle area require enough active energy which
+            equal to card's cost.
+            - In the turn when a Battle Card is played on the field, it cannot
+            attack unless it has the "rush" effect and the Battle card will be in
+            active status.
+            - Combo power is used to increase the power of the attacking card or
+            the card being attacked.
+            - During combat phase, Battle Card can play from hand to combo area
+            without requiring any energy. In such situation, card's combo power
+            will be adding to the attacking card or the card being attacked.
+            - During combat phase, Battle Card can move from battle area to combo
+            area with requiring. In such situation, card's combo power will be
+            adding to the attacking card or the card being attacked.
+            - At the end of combat phase, all battle cards on combat area will
+            move to trash.
+            - When a new turn begin, all rested battle card will become active.
+
+            #### Extra
+            - Attributes:
+            - Cost
+            - Color
+            - Effect
+            - Features
+            - Extra card can play from hand to the field in main phase or combat phrase.
+            - Play Extra card from hand to the field require enough active energy
+            which equal to card's cost.
+            - In the turn when an Extra Card is played on the field, the card
+            effect will trigger automatically.
+            - Once the card effect is executed, it will go to the trash.
+
+            ### Game Flow
+            -Assume player 1 is the first player and player 2 is the second player.
+            -Start initialization of the Game
+            -game start
+            -player 1 start first turn. (turn 1)
+            -player 1 end the turn.
+            -player 2 start second turn. (turn 2)
+            -player 2 end the turn.
+            -player 1 start a new turn. (turn 3)
+            -go through the same loop until a player win the game.
+
+
+            ### Resources
+
+            #### Energy
+            - Energy has two statuses: rested and active.
+            - In the begining of first turn (turn 1), the player can gain 1 active energy.
+            - From the second turn onward, all players can gain 2 active energy at
+            the beginning of a new turn.
+            - All players can only have a maximum of 10 energy.
+            - When a new turn begin, all rested energy will become active.
+            - All Battle Cards and Extra Cards require active energy to play.
+            - When playing a card except the case used for combo area, players
+            must have active energy equal to the card's cost otherwise player
+            cannot play the card.
+            - After a card is played on the field, active energy equal to the
+            card's cost should turn into rested.
+            - All energy should be in the energy area.
+
+            ### Areas in Game Field
+            1. Hand Area
+            2. Energy Area
+            3. Combo Area : all card in combo area will move to trash when end of
+            combo area.
+            4. Battle Area
+            5. Trash Area
+            6. Life Area : Whenever a player takes damage, the top card from the
+            life area is drawn and moved to the player's hand. When player have 0
+            life cards in life area and take one more damage, player will lose the
+            game.
+
+            ### Initialization of the Game
+            1. both player's Deck shuffle randomly.
+            2. After shuffling, 6 cards are drawn from the top of the deck to the
+            player's hand.
+            3. If a player is not happy with the cards in their hand, they can
+            return all their cards on hand, shuffle the deck, and draw 6 new cards
+            from the top of the deck.
+            4. Players only have 1 chance to redraw.
+            5. After completing the draw hand process, 8 cards are drawn from the
+            top of the deck to the life area.
+            6. 8 cards in the life area mean the player has 8 life points.
+
+
+            ### Phases of a Turn
+
+            #### Start Phase
+            1. Player gains energy.
+            2. 1 card is drawn from the top of the deck and added to the player's hand.
+            3. All cards in the game field (energy area & battle area) become active.
+            4. Any start-of-turn effects occur.
+
+            #### Main Phase
+            1. Players can play cards from their hand as long as they have enough
+            active energy.
+            2. When a battle card is played from the hand successfully, the battle
+            card should be in active status but cannot attack unless it has the
+            effect "rush".
+            3. Players can use an active leader card or active battle card to
+            attack any of one the opponent's rested battle cards or leader (no
+            matter leader is active or rested).
+            4. When an attack is declared, it will enter to the combat phase.
+
+            #### Combat Phase
+            - There are 3 sub-phases in the combat phase: Player attack phase ,
+            opponent defend phase and damage summary phase.
+            - The Combo Power of all cards in the Combo Area is added to the
+            attacking card's Power or the card being attacked's Power.
+            ### Player attack phase
+            - the attacking player can increase their attacking card's power by
+            playing cards in the combo area through the following means:
+            1. Play Card From Hand: The attacking player can play any number of
+            cards from their hand directly to the Combo Area. This does not
+            require any energy.
+            2. Move Card From Battle Area: The attacking player can move any
+            number of their Battle Cards from the Battle Area to the Combo Area.
+            It does not matter if these cards are rested or active.
+            - With action 1 & 2, the total combo power of all cards in combo area
+            will be added to the attacking card's Power.
+            - player can choose ending player attack phase and it will enter
+            opponent defend phase.
+            ### Opponent defend phase
+            - the defending player can increase the defending card's power by
+            playing cards in the combo area through the following means:
+            1. Play Card From Hand: defending player can play any number of cards
+            from their hand directly to the Combo Area. This does not require any
+            energy.
+            2. Move Card From Battle Area: The defending player can move any
+            number of their Battle Cards from the Battle Area to the Combo Area.
+            It does not matter if these cards are rested or active.
+            - With action 1 & 2, the total combo power of all cards in combo area
+            will be added to the defending card's power.
+            - Opponent can choose ending Opponent defend phase and it will enter
+            Damage summary phase.
+            ### Damage summary phase
+            - System will summarize all combo power for both player.
+            - For player choose to attack rested battle card,
+            1.If the total power of the attacking card is higher than the total
+            power of the card being attacked, the card being attacked will go to
+            the trash.
+            2.If the total power of the attacking card is equal to the total power
+            of the card being attacked, nothing will happen to the card being
+            attacked.
+            3.If the total power of the attacking card is less than the total
+            power of the card being attacked, nothing will happen to the card
+            being attacked.
+
+            - For player choose to attack leader,
+            1.If the total power of the attacking card is higher than the total
+            power of the card being attacked, opponent need to take 1 damage. Mean
+            1 cards will be drawn from life area to hand. If life area doesnt have
+            any card and opponent need to take the damage, opponent loss the game.
+            2.If the total power of the attacking card is equal to the total power
+            of the card being attacked, nothing will happen to opponent.
+            3.If the total power of the attacking card is less than the total
+            power of the card being attacked, nothing will happen to opponent.
+
+            - Combat phase will end.
+            - After combat phase end, all cards in the combo area will go to the trash.
+            - After combat phase end, the attacking card no matter is battle card
+            or leader will become rested after the damage summary phase.
+            - After combat phase end, and it will go back to the main phase and in
+            turn player can choose to start enter action.
+            - Opponent should always keep minimize card to protect opponent to get damage
+
+            #### End Phase
+            1. Check for any end-of-turn conditions or effects.
+            2. Start a new turn for your opponents.
+
+
+given i can do this 3 move in the main phase, how can i do analysis to understand which is the best move for me as a player
+
+1.Play a Battle Card from hand to the Battle Area.
+2.Play an Extra Card from hand to the field.
+3.Declare an attack with a Leader Card or Battle Card.
