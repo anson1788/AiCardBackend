@@ -33,6 +33,17 @@ Shuffled Deck :[ 'ST01-005', 'ST01-009', 'ST01-006', 'ST01-009', 'ST01-003', 'ST
 Don on Field: 0 active , 0 rested
 
 #Player View
+Current Turn : 1 //assume this is the first turn of the game
+Current Player : Player 1
+Leader : ST01-001
+Hand : ['ST01-008', 'ST01-008', 'ST01-005', 'ST01-002', 'ST01-016']
+Life : 5
+Don on Field: 1 active , 0 rested
 
+Player 2:
+Leader : ST01-001
+Hand : ['ST01-009', 'ST01-010', 'ST01-003', 'ST01-007', 'ST01-013']
+Life : 5
+Don on Field: 0 active , 0 rested
 
 
